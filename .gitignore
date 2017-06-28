@@ -1,0 +1,8 @@
+.latexrun.db
+.latexrun.db.lock
+_minted*
+*.aux
+*.log
+*.out
+*.toc
+*.fls

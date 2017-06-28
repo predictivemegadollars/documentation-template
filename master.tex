@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
 
-\usepackage{tdc_doc}
+\usepackage{config/tdc_doc}
+\graphicspath{{config/} {pics/}}
 
 %------------------------------------ FRONTPAGE ----------------------------------------------
 \begin{document}
@@ -40,10 +41,21 @@
 
 \newpage
 
+
+%----------- Set project name ---------------------
 \setProject{Documentation on how to do documentation}
 
-\section{Introduction}
+%----------- TEXT ---------------------------------
+%%---- Note: Define Titles/Subtitles inside input-files
 
+%------ Introduction
+\input{sections/introduction}
+
+%------ Usage
+\input{sections/usage}
+
+%------ Improvements
+\input{sections/improvements}
 
 
 \end{document}
