@@ -1,0 +1,49 @@
+\section{Usage}
+
+\subsection{Running the LaTeX document}
+
+\subsubsection{Requirements}
+
+You'll need to have \LaTeX  installed. Also, you'll need \textbf{python} with \textbf{Pygments}:
+
+\inputminted{python}{src/installPygments.py}
+
+This ensures, that you can highlight code.
+\begin{minted}{python}
+def test(args):
+	for elem in args:
+		print(elem)
+		if "something" in elem:
+			out = elem
+	return(out)
+\end{minted}
+
+\subsection{Compiling the document}
+
+You can compile the \LaTeX  document using the provided \textbf{latexrun} package or the standard \textbf{pdflatex}. The latter will not provide very useful error-prompts and the prior (\textbf{latexrun}) is suggested as an alternative. 
+
+\begin{minted}{shell}
+#Using pdflatex
+pdflatex --shell-escape master.tex
+
+#Using latexrun
+./latexrun --latex-args "\-shell-escape" -O . -o report.pdf master.tex
+\end{minted}
+
+\subsection{Using the .sty file}
+
+\subsubsection{Code highlighting}
+The \texttt{.sty}-file provides a package for code highlights, which can be embedded in your \LaTeX  documentation. Use as in this file. You can either do \textbf{inline code} or use from \textbf{file}. 
+
+You can alter the highlight-colors by changing the \textbf{usemintedstyle{}}-argument in your \textbf{master.tex}-file.
+
+\subsubsection{Setting up your project}
+In your \textbf{master.tex}-file simply put your project name into: \\
+ \begin{verbatim}\setProject{<yourproject>}\end{verbatim} \\
+ ... and your name into: \\
+ \begin{verbatim}\setAuthor{<yourname>}\end{verbatim} \\
+Now, everything will be added to the header as well as title. \\
+
+
+
+

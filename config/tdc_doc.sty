@@ -69,8 +69,26 @@
 % Code
 \RequirePackage{alltt}
 \RequirePackage{minted}
-\usemintedstyle{monokai}
 \RequirePackage{menukeys}
+
+\setminted[python]
+{
+frame=lines,
+linenos
+}
+
+\setminted[shell]
+{
+frame=lines,
+linenos
+}
+
+\setminted[latex]
+{
+frame=lines,
+linenos
+}
+
 %%%
 
 %%%
@@ -165,6 +183,12 @@
 	\renewcommand{\project}{#1}\title{#1}\hypersetup{pdftitle={#1}}%
 }
 \define@key{header}{project}{\setProject{#1}}
+
+\newcommand{\author}{\empty}
+\newcommand{\setAuthor}[1]{%
+	\renewcommand{\author}{#1}\title{#1}\hypersetup{pdftitle={#1}}%
+}
+\define@key{header}{project}{\setAuthor{#1}}
 
 %%%
 % Fancy
