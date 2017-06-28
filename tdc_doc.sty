@@ -1,0 +1,182 @@
+% Copyright (C) 2017 TDC Group - Predictive Analytics
+% Author: Adam Frederik Ingwersen Linnemann, AFLI
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, entity to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+\ProvidesPackage{tdc_doc}
+
+%% Version 1.0
+
+%%% BEGIN
+% Parse Options
+\newcommand\babelopts{english}
+\DeclareOption{danish}{\renewcommand\babelopts{danish}}
+\ProcessOptions\relax
+%%%
+
+%%% 
+% Language
+\PassOptionsToPackage{utf8}{inputenc}
+\RequirePackage{inputenc}
+\PassOptionsToPackage{\babelopts}{babel}%
+\RequirePackage{babel}
+%%%
+
+%%%
+% Font
+\PassOptionsToPackage{T1}{fontenc}
+\RequirePackage{fontenc}
+\RequirePackage{mathpazo}
+%%%
+
+%%%
+% Mathematics
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{algorithm}
+\RequirePackage{float}
+\everymath{\displaystyle}
+%%%
+
+%%%
+% LaTeX macro utilities
+\RequirePackage{xparse}
+%%%
+
+%%%
+% Colours
+\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
+%%%
+
+%%%
+% Code
+\RequirePackage{alltt}
+\RequirePackage{minted}
+\usemintedstyle{monokai}
+\RequirePackage{menukeys}
+%%%
+
+%%%
+% Graphics
+\RequirePackage{amsfonts}
+\RequirePackage{graphicx}
+\RequirePackage{eso-pic}
+\RequirePackage{listings}
+\newcommand{\BackgroundPic}{\put(30, 640){\parbox[t][0.15\paperheight]{0.15\paperwidth}{\centering\includegraphics[width=0.23\paperwidth,height=0.22\paperheight]{tdc_logo.jpg}}}}
+%%%
+
+%%%
+% Citations
+\RequirePackage{cite}
+%%%
+
+%%%
+% Enumerations
+\RequirePackage{paralist} % inparaenum
+\RequirePackage{enumitem}
+%%%
+
+%%%
+% Colours
+\RequirePackage{color}
+%%%
+
+%%%
+% Links and metadata (in PDFs).
+\PassOptionsToPackage{colorlinks=true}{hyperref} % color, not box the links
+\RequirePackage{hyperref}
+
+%%%
+% Captions
+\PassOptionsToPackage{hang, small, bf}{caption}
+\RequirePackage{caption}
+%%%
+
+%%%
+% Checkbox lists
+%
+% Example:
+%   \begin{checkbox}
+%     \item This is an unchecked checkbox.
+%     \item[checked] This is a checked checkbox.
+%   \end{checkbox}
+%
+% Inspired by: http://tex.stackexchange.com/a/313337
+\RequirePackage{enumitem}
+\newlist{checkbox}{itemize}{2}
+\setlist[checkbox]{label=$\square$}
+\RequirePackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\checked}{%
+  \rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+  \hspace{-2.5pt}%
+}
+%%%
+
+%%%
+% Header
+\newcommand{\shortDepartment}{\empty}
+\newcommand{\setShortDepartment}[1]{%
+  \renewcommand{\shortDepartment}{#1}%
+}
+\setShortDepartment{PA}
+
+\newcommand{\entity}{\empty}
+\newcommand{\setEntity}[1]{%
+	\renewcommand{\entity}{#1}%
+}
+\define@key{header}{entity}{\setEntity{#1}}
+\setEntity{TDC Group A/S}
+
+\newcommand{\department}{\empty}
+\newcommand{\setDepartment}[1]{%
+  \renewcommand{\department}{#1}%
+  \setShortDepartment{#1}
+}
+\define@key{header}{department}{\setDepartment{#1}}
+\setDepartment{Predictive Analytics}
+
+\newcommand{\staticDate}{\empty}
+\newcommand{\setStaticDate}[1]{%
+	\renewcommand{\staticDate}{#1}\date{#1}%
+}
+\define@key{header}{staticDate}{\setStaticDate{#1}}
+\setStaticDate{\today}
+
+\newcommand{\project}{\empty}
+\newcommand{\setProject}[1]{%
+	\renewcommand{\project}{#1}\title{#1}\hypersetup{pdftitle={#1}}%
+}
+\define@key{header}{project}{\setProject{#1}}
+
+%%%
+% Fancy
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\chead{\footnotesize\department\\\project }
+\lhead{\footnotesize\entity\\}
+\rhead{\footnotesize\staticDate\\}
+\renewcommand{\headrulewidth}{0in}
+\renewcommand{\headsep}{40pt}
+\setlength{\headheight}{20pt}
+\addtolength{\textheight}{-20pt}
+%%%
+\RequirePackage{tikz}
+%%%
