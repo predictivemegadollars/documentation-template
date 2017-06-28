@@ -1,49 +1,49 @@
 \documentclass[a4paper]{article}
 
+%---------- Reference subfolders -----------------
 \usepackage{config/tdc_doc}
 \graphicspath{{config/} {pics/}}
+
+%----------- Set project name ---------------------
+\setProject{Documentation on how to do documentation}
 
 %------------------------------------ FRONTPAGE ----------------------------------------------
 \begin{document}
 	\AddToShipoutPicture*{\BackgroundPic}
-
 	\begin{titlepage}
 		\thispagestyle{empty}
 		\vspace*{5cm}
 		\begin{center}
 				\LARGE \textbf{Documentation on how to do documentation}
-
 		\vspace*{7cm}
 		\begin{flushleft}
-
 		\begin{table}[h!]
 			\begin{tabular}{lll}
 			Adam Frederik Ingwersen Linnemann 
 			\end{tabular}
 		\end{table}
 			\vspace{3mm}
+			\project\\
+			\vspace{3mm}
 			Predictive Analytics \\
 			\vspace{3mm}
 			TDC GROUP A/S \\
 			\vspace{3mm}
 			\today\\
-
 		\end{flushleft}
 	\end{titlepage}
-
 	\title{}
 	\author{}
-
 	\newpage
 \newpage
 
+
+%---------- Add TOC ----------------------------
 \tableofcontents
+
 
 \newpage
 
-
-%----------- Set project name ---------------------
-\setProject{Documentation on how to do documentation}
 
 %----------- TEXT ---------------------------------
 %%---- Note: Define Titles/Subtitles inside input-files
@@ -58,5 +58,7 @@
 \input{sections/improvements}
 
 
+
+%%%
 \end{document}
 
